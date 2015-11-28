@@ -1,0 +1,280 @@
+body {
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #007adc;
+}
+
+a.active {
+  color: #ff3b30;
+}
+
+.App {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.App--loading {
+  opacity: 0.5;
+}
+
+.TopBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  line-height: 20px;
+  background: #ccc;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+.ContactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ContactList__Contact {
+  box-sizing: border-box;
+  transition: all 500ms ease;
+}
+
+.ContactList__Link {
+  display: block;
+  padding: 4px 8px;
+  font-size: 120%;
+}
+
+.ContactList__Link--new {
+  color: #4cd964;
+}
+
+.Heading {
+  margin: 0;
+  text-align: center;
+  padding: 10px;
+  background: #007adc;
+  color: #fff;
+  font-size: 100%;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.Heading--alt {
+  background-color: #4cd964;
+}
+
+.Content {
+
+  overflow: scroll;
+  background: #fff;
+}
+
+.padBox {
+  padding: 20px;
+}
+
+.Avatar {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #ccc;
+  display: inline-block;
+  margin: 20px;
+}
+
+.KVSet {
+  margin: 20px;
+}
+
+.KV {
+  display: flex;
+  flex-direction: row;
+}
+
+.KV__Key,
+.KV__Value {
+  box-sizing: border-box;
+  margin: 10px;
+  font-size: 150%;
+}
+
+.KV__Key {
+  width: 150px;
+  color: hsl(0, 0%, 75%);
+}
+
+.detail-enter {
+  opacity: 0.01;
+  transition: opacity 500ms ease;
+}
+
+.detail-enter.detail-enter-active {
+  opacity: 1;
+}
+
+.detail-leave {
+  transition: opacity 500ms ease;
+  opacity: 1;
+}
+
+.detail-leave.detail-leave-active {
+  opacity: 0.01;
+}
+
+
+
+
+
+
+/* Header */
+
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+.Header {
+  background: white;
+  color: rgb(126, 61, 16);
+  display:inline;
+}
+
+.Header-container {
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: center;
+}
+
+.Header-brand {
+  color: rgb(126, 61, 16);
+  text-decoration: none;
+  font-size: 5.5em; /* ~28px */
+}
+
+.Header-graphic-separator{
+  background:
+    transparent
+    url(http://files.nearlyweds.com.s3.amazonaws.com/template_images/5016_2c700e2612fcbcf4a6bcf830e091e33d9f12869e.png)
+    center center no-repeat;
+  height: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.Header-brandTxt {
+  margin-left: 10px;
+  font-family: brandon-grotesque;
+  letter-spacing: 6px;
+  font-size: 0.7em;
+
+}
+
+.Header-nav {
+  margin-top: 6px;
+}
+
+.Header-banner {
+  text-align: center;
+}
+
+.Header-bannerTitle {
+  margin: 0;
+  padding: 10px;
+  font-weight: normal;
+  font-size: 4em;
+  line-height: 1em;
+}
+
+.Header-bannerDesc {
+  padding: 0;
+  color: rgba(255, 255, 255, .5);
+  font-size: 1.25em;
+  margin: 0;
+}
+
+
+/* End Header */
+
+
+
+/* App */
+
+.fixed-container{
+   background:
+     white
+     url(http://files.nearlyweds.com.s3.amazonaws.com/template_images/4731_46a9925d308d8f286b5de482380cd731d155c224.jpg)
+     no-repeat
+     scroll
+     top left;
+ }
+
+ .Content-text{
+  text-align: center;
+  color: #7e3d10;
+  font-family: 'Copperplate Gothic Light';
+  font-size: 38px;
+  line-height: 1.6em;
+}
+
+.Content-large-image{
+  width: 81%;
+  margin-left: 11%;
+  margin-top: 10px;
+}
+
+ /* End App */
+
+
+
+
+/* Navigation */
+
+
+.Navigation-link {
+  display: inline-block;
+  padding: 3px 8px;
+  text-decoration: none;
+  font-size: 1.125em; /* ~18px */
+}
+
+.Navigation-link,
+.Navigation-link:active,
+.Navigation-link:visited {
+  color: rgba(28, 28, 28, .6);
+  border-bottom: 1px solid lightgray;
+  margin-right: 16px;
+}
+
+.Navigation-link:visited {
+  color: gray;
+}
+
+.Navigation-link:hover {
+  color: rgba(196, 196, 196, 1);
+}
+
+.Navigation-link--highlight {
+  margin-right: 8px;
+  margin-left: 8px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, .15);
+  color: #fff;
+}
+
+.Navigation-link--highlight:hover {
+  background: rgba(0, 0, 0, .3);
+}
+
+
+/* End Navigation */
