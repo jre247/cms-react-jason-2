@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 var React = require('react');
-var api = require('../utils/api');
 
 var Contact = module.exports = React.createClass({
 
@@ -52,4 +51,3 @@ var Contact = module.exports = React.createClass({
     );
   }
 });
-

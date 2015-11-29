@@ -1,8 +1,7 @@
 var React = require('react');
 var { Link, RouteHandler } = require('react-router');
 var TransitionGroup = require('react/lib/ReactCSSTransitionGroup');
-var api = require('../utils/api');
-var Navigation = require('../handlers/Navigation');
+var Header = require('./Header');
 var twitter = "http://twitter.com/ryanflorence";
 var rr = "https://github.com/rackt/react-router";
 var source = "https://github.com/rackt/react-router-mega-demo";
@@ -17,11 +16,7 @@ var sortContacts = (contacts) => {
 
 var Root = module.exports = React.createClass({
 
-  statics: {
-    fetchData: (token, params, query) => {
-      return api.get('/contacts', token);
-    }
-  },
+
 
   getInitialState () {
     return { longLoad: false };
@@ -64,24 +59,7 @@ var Root = module.exports = React.createClass({
     return (
       <div className={className}>
         <div className="fixed-container">
-          <div className="Header">
-            <div className="Header-container">
-                <a className="Header-brand" href="/" >
-                  <span className="Header-brandTxt">JASON & JENNA</span>
-                </a>
-
-                <div className="Header-graphic-separator">
-                </div>
-
-                <div>
-                  <Navigation className="Header-nav" />
-                </div>
-
-                <div className="Header-graphic-separator">
-                </div>
-            </div>
-          </div>
-
+          <Header />
           <TransitionGroup transitionName="detail">
             <RouteHandler {...this.props} />
           </TransitionGroup>

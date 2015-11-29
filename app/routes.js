@@ -4,16 +4,18 @@ var { DefaultRoute, Route, NotFoundRoute } = require('react-router');
 module.exports = (token) => {
 
   // hand-wavy dependency injection
-  var CreateContact = require('./handlers/CreateContact');
-  CreateContact.token = token;
+  var EditVenue = require('./handlers/EditVenue');
+  EditVenue.token = token;
 
   return [
     <Route name="root" path="/" handler={require('./handlers/Root')}>
       <DefaultRoute handler={require('./handlers/Home')} />
-      <Route name="contact" path="contact/:id" handler={require('./handlers/Contact')} />
-      <Route name="newContact" handler={require('./handlers/NewContact')} />
-      <Route name="ourStory" handler={require('./handlers/OurStory')} />
-      <Route name="createContact" handler={CreateContact} />
+      <Route name="photo-album" handler={require('./handlers/PhotoAlbum')} />
+      <Route name="our-story" handler={require('./handlers/OurStory')} />
+      <Route name="venue" handler={require('./handlers/Venue')} />
+      <Route name="accomodations" handler={require('./handlers/Accomodations')} />
+      <Route name="gift-registry" handler={require('./handlers/GiftRegistry')} />
+      <Route name="edit-venue" handler={EditVenue} />
     </Route>,
     <NotFoundRoute name="not-found" handler={require('./handlers/NotFound')}/>
   ];
