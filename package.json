@@ -24,7 +24,10 @@
     "bluebird": "3.0.5",
     "classnames": "2.2.0",
     "pg": "*",
-    "node-promise": "*"
+    "pg-native": "*",
+    "fs": "*",
+    "node-promise": "*",
+    "json-loader": "*"
   },
   "devDependencies": {
     "assert": "^1.1.1",
