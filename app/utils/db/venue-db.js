@@ -1,10 +1,11 @@
 var pg = require('pg');
-var Promise = require('when').Promise;
+var Promise = require("node-promise").Promise;
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/wedding';
 
 exports.insert = function(data){
   try{
     var results = [];
+    var promise = new Promise();
 
     pg.connect(connectionString, function(err, client, done) {
         if(err) {
@@ -38,6 +39,8 @@ exports.insert = function(data){
 exports.get = function(){
   console.log('db get for venue.');
   var results = [];
+  var promise = new Promise();
+  console.log('promise: ' + promise);
   console.log('pg: ' + pg);
   console.log('connection string: ' + connectionString);
 
@@ -50,14 +53,13 @@ exports.get = function(){
         console.log('running query.');
 
         var query = client.query("select * from Venue where IsActive = 1");
-
         // Stream results back one row at a time
         query.on('row', function(row) {
             results.push(row);
         });
 
         query.on('end', function() {
-          Promise.resolve(processQueryEnd(done, results));
+          promise.resolve(processQueryEnd(done, results));
         });
     });
   }
@@ -65,6 +67,7 @@ exports.get = function(){
     console.log('Exception running query with psql: ' + ex);
   }
 
+  return promise.promise;
 
 
 }
