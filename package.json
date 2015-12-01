@@ -27,7 +27,8 @@
     "pg-native": "*",
     "fs": "*",
     "node-promise": "*",
-    "json-loader": "*"
+    "json-loader": "*",
+    "supervisor": "*"
   },
   "devDependencies": {
     "assert": "^1.1.1",
