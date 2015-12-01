@@ -17,8 +17,8 @@ exports.insert = function(data){
         }
 
         client.query(
-          "INSERT INTO Venue(Name, CeremonyTime, Description, DateModified, DateCreated, UserId, IsActive) values($1, $2, $3, $4, $5, $6, $7)",
-          [data.name, data.ceremonyTime, data.description, data.dateModified, data.dateCreated, data.userId, true]
+          "INSERT INTO Venue(Name, CeremonyTime, Url, Description, DateModified, DateCreated, UserId, IsActive) values($1, $2, $3, $4, $5, $6, $7, $8)",
+          [data.name, data.ceremonyTime, data.url, data.description, data.dateModified, data.dateCreated, data.userId, true]
         );
 
         var query = client.query("select * from Venue where IsActive = true");
@@ -66,8 +66,6 @@ exports.get = function(){
 
         query.on('end', function() {
           var venue = processQueryEnd(done, results);
-          console.log('venue returned in end query. venue: ' + venue);
-          console.log('venue returned in end query. venue.name: ' + venue.name);
           promise.resolve(venue);
         });
     });
@@ -85,10 +83,6 @@ var processQueryEnd = function(done, results){
   if(results.length > 1){
     throw "Venue record set has more than one record returned from the query.";
   }
-
-  console.log('returning result record in processQueryEnd.');
-  console.log('results.length: ' + results.length);
-  console.log('returning result record, Name: ' + results[0].name);
 
   return results[0];
 }
