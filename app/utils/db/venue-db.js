@@ -52,7 +52,7 @@ exports.get = function(){
 
         console.log('running query.');
 
-        var query = client.query("select * from Venue where IsActive = 1");
+        var query = client.query("select * from Venue where IsActive = true");
         // Stream results back one row at a time
         query.on('row', function(row) {
             results.push(row);

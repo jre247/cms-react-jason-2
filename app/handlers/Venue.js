@@ -12,7 +12,7 @@ var Location = module.exports = React.createClass({
   },
   render: function() {
     var data = this.props.data.venue;
-    var venue = data.venue;
+    var venue = data != null && data != "undefined" ? data.venue : {};
     return (
       <div className="Detail">
         <div className="Content-text">

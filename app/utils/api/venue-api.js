@@ -14,8 +14,14 @@ exports.get = (url, token) => {
   }
 
   venueDb.get().then(function(res) {
-    cache.set(token, url, res.data);
-    return promise.resolve(res.data);
+    var venueData = {};
+
+    if(res){
+      cache.set(token, url, res.data);
+      venueData = res.data;
+    }
+
+    return promise.resolve(venueData);
   });
 
   return promise;
