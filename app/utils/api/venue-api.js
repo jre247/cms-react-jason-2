@@ -14,21 +14,43 @@ exports.get = (url, token) => {
   }
 
   venueDb.get().then(function(res) {
+    console.log('venue db get returned: res' + res);
+    console.log('venue db get returned: res.name: ' + res.name);
+    console.log('venue db get returned: res.description: ' + res.description);
+    //console.log('venue db get returned: res.data.name' + res.data.name);
+
     var venueData = {};
 
     if(res){
-      cache.set(token, url, res.data);
-      venueData = res.data;
+      console.log('res is null?' + res);
+      cache.set(token, url, res);
+      venueData = res;
     }
 
-    return promise.resolve(venueData);
+    console.log('venueData.name: ' + venueData.name);
+
+    promise.resolve(venueData);
   });
 
   return promise;
 };
 
 exports.post = (url, data, token) => {
-  return venueDb.insert(data).then(function(res) {
+  var venue = data.venue;
+  venue.user = 1;
+  venue.dateCreated = new Date();
+  venue.dateModified = new Date();
+
+  console.log('data: ' + data);
+  console.log('name: ' + venue.name);
+  console.log('ceremonyTime: ' + venue.ceremonyTime);
+  console.log('description: ' + venue.description);
+  console.log('ceremonyTime: ' + venue.ceremonyTime);
+
+  return venueDb.insert(venue).then(function(res) {
+    console.log('venue db insert returned: res' + res);
+    console.log('venue db insert returned: res.data' + res.data);
+    console.log('venue db insert returned: res.data.name' + res.data.name);
     return res.data;
   });
 };

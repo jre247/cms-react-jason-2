@@ -21,7 +21,7 @@ CREATE TABLE Venue\
 	Description \cf4 \cb5 \expnd0\expndtw0\kerning0
 \outl0\strokewidth0 VARCHAR(40) null, \
 	CeremonyTime VARCHAR(40) null, \
-	\'93User\'94 INTEGER NOT NULL references \'93User\'94(Id), 	\
+	UserId INTEGER NULL references \'93Users\'94(Id), 	\
 	DateCreated TIMESTAMP null, \
 	DateModified \cf4 \cb5 \expnd0\expndtw0\kerning0
 TIMESTAMP\cf4 \cb5 \expnd0\expndtw0\kerning0
@@ -32,13 +32,13 @@ TIMESTAMP\cf4 \cb5 \expnd0\expndtw0\kerning0
 \
 \pard\pardeftab720\sl552
 \cf4 \cb5 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 CREATE TABLE \'93User\'94 (Id SERIAL PRIMARY KEY, Name VARCHAR(40) not null, IsActive BOOLEAN);\
+\outl0\strokewidth0 CREATE TABLE \'93Users\'94 (Id SERIAL PRIMARY KEY, Name VARCHAR(40) not null, IsActive BOOLEAN);\
 \
 \pard\pardeftab720\sl552
 \cf4 \cb5 \expnd0\expndtw0\kerning0
-CREATE TABLE \'93Role\'94(Id SERIAL PRIMARY KEY, Name VARCHAR(40) not null, IsActive BOOLEAN);\
+CREATE TABLE \'93Roles\'94(Id SERIAL PRIMARY KEY, Name VARCHAR(40) not null, IsActive BOOLEAN);\
 \
-CREATE TABLE UserRole(Id SERIAL PRIMARY KEY, UserId INTEGER not null references \'93User\'94(Id), RoleId INTEGER not null references \'93Role\'94(Id), IsActive BOOLEAN);
+CREATE TABLE UserRole(Id SERIAL PRIMARY KEY, UserId INTEGER not null references \'93Users\'94(Id), RoleId INTEGER not null references \'93Role\'94(Id), IsActive BOOLEAN);
 \f1\fs30 \cf6 \cb7 \expnd0\expndtw0\kerning0
 \outl0\strokewidth0 \strokec6 \
 }

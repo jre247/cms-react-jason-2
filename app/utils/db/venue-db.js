@@ -4,36 +4,42 @@ var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/we
 
 exports.insert = function(data){
   try{
+    console.log('starting insert.');
+
     var results = [];
     var promise = new Promise();
 
     pg.connect(connectionString, function(err, client, done) {
+        console.log('starting pg connect for insert.');
+
         if(err) {
           processError(done, err);
         }
 
         client.query(
-          "INSERT INTO Venue(Name, CeremonyTime, Description, DateModified, DateCreated, User, IsActive) values($1, $2, $3, $4, $5, $6, $7)",
-          [data.VenueName, data.CeremonyTime, data.Description, data.DateModified, data.DateCreated, data.User, data.IsActive]
+          "INSERT INTO Venue(Name, CeremonyTime, Description, DateModified, DateCreated, UserId, IsActive) values($1, $2, $3, $4, $5, $6, $7)",
+          [data.name, data.ceremonyTime, data.description, data.dateModified, data.dateCreated, data.userId, true]
         );
 
-        var query = client.query("select * from Venue where IsActive = 1");
+        var query = client.query("select * from Venue where IsActive = true");
 
         // Stream results back one row at a time
         query.on('row', function(row) {
+            console.log('pushing row for insert.');
             results.push(row);
         });
 
         query.on('end', function() {
-            return processQueryEnd(done, results);
+            console.log('starting process query end for insert.');
+            promise.resolve(processQueryEnd(done, results));
         });
-
-        setupQueryProcessingEvents(query, results, done);
     });
   }
   catch(ex){
     console.log('Exception running query with psql: ' + ex);
   }
+
+  return promise;
 }
 
 exports.get = function(){
@@ -59,7 +65,10 @@ exports.get = function(){
         });
 
         query.on('end', function() {
-          promise.resolve(processQueryEnd(done, results));
+          var venue = processQueryEnd(done, results);
+          console.log('venue returned in end query. venue: ' + venue);
+          console.log('venue returned in end query. venue.name: ' + venue.name);
+          promise.resolve(venue);
         });
     });
   }
@@ -67,9 +76,7 @@ exports.get = function(){
     console.log('Exception running query with psql: ' + ex);
   }
 
-  return promise.promise;
-
-
+  return promise;
 }
 
 var processQueryEnd = function(done, results){
@@ -78,6 +85,10 @@ var processQueryEnd = function(done, results){
   if(results.length > 1){
     throw "Venue record set has more than one record returned from the query.";
   }
+
+  console.log('returning result record in processQueryEnd.');
+  console.log('results.length: ' + results.length);
+  console.log('returning result record, Name: ' + results[0].name);
 
   return results[0];
 }

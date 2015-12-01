@@ -16,6 +16,7 @@ module.exports = (token) => {
       <Route name="accomodations" handler={require('./handlers/Accomodations')} />
       <Route name="gift-registry" handler={require('./handlers/GiftRegistry')} />
       <Route name="edit-venue" handler={EditVenue} />
+      <Route name="save-venue" handler={require('./handlers/SaveVenue')} />
     </Route>,
     <NotFoundRoute name="not-found" handler={require('./handlers/NotFound')}/>
   ];
